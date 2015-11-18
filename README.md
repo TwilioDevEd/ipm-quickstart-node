@@ -61,7 +61,7 @@ node .
 Your application should now be running at http://localhost:3000. Open this page
 in a couple browsers or tabs, and start chatting!
 
-![screenshot](//s3.amazonaws.com/howtodocs/quickstart/ipm-browser-quickstart.png)
+![screenshot of chat app](https://s3.amazonaws.com/howtodocs/quickstart/ipm-browser-quickstart.png)
 
 ## License
 
