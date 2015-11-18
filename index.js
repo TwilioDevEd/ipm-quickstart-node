@@ -14,21 +14,21 @@ var path = require('path');
 var AccessToken = require('twilio').AccessToken;
 var IpMessagingGrant = AccessToken.IpMessagingGrant;
 var express = require('express');
+var randomUsername = require('./randos');
 
 // Create Express webapp
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
-Generate an Identity Token for a chat application user - takes two query
-parameters:
+Generate an Identity Token for a chat application user - it generates a random
+username for the client requesting a token, and takes a device ID as a query
+parameter.
 
-identity: a string identifier for the user in the app, like a username or e-mail
-device: a string identifier for the device a user is connecting from
 */
 app.get('/token', function(request, response) {
     var appName = 'TwilioChatDemo';
-    var identity = request.query.identity;
+    var identity = randomUsername();
     var deviceId = request.query.device;
 
     // Create a unique ID for the client on their current device
@@ -53,6 +53,7 @@ app.get('/token', function(request, response) {
 
     // Serialize the token to a JWT string and include it in a JSON response
     response.send({
+        identity: identity,
         token: token.generate()
     });
 });

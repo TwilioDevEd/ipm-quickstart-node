@@ -12,12 +12,18 @@ $(function() {
     // will have in this sample app
     var generalChannel;
 
-    // Assign this client a random username
-    var username = randomUsername();
+    // The server will assign the client a random username - store that value
+    // here
+    var username;
 
     // Helper function to print info messages to the chat window
-    function print(infoMessage) {
-        var $msg = $('<div class="info">').text(infoMessage);
+    function print(infoMessage, asHtml) {
+        var $msg = $('<div class="info">');
+        if (asHtml) {
+            $msg.html(infoMessage);
+        } else {
+            $msg.text(infoMessage);
+        }
         $chatWindow.append($msg);
     }
 
@@ -34,7 +40,7 @@ $(function() {
     }
 
     // Alert the user they have been assigned a random username
-    print('You have been assigned a random username of: ' + username);
+    print('Logging in...');
 
     // Get an access token for the current user, passing a username (identity)
     // and a device ID - for browser-based apps, we'll always just use the 
@@ -43,6 +49,11 @@ $(function() {
         identity: username,
         device: 'browser'
     }, function(data) {
+        // Alert the user they have been assigned a random username
+        username = data.identity;
+        print('You have been assigned a random username of: ' 
+            + '<span class="me">' + username + '</span>', true);
+
         // Initialize the IP messaging client
         accessManager = new Twilio.AccessManager(data.token);
         messagingClient = new Twilio.IPMessaging.Client(accessManager);
@@ -76,7 +87,8 @@ $(function() {
     function setupChannel() {
         // Join the general channel
         generalChannel.join().then(function(channel) {
-            print('Signed in as ' + username + '.');
+            print('Joined channel as ' 
+                + '<span class="me">' + username + '</span>.', true);
         });
 
         // Listen for new messages sent to the channel

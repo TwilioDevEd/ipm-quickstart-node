@@ -78,9 +78,12 @@ section input {
   color:#849091;
 }
 
+.me, .username.me {
+  font-weight:bold;
+  color:cyan;
+}
+
 .message-container .username.me {
   display:inline-block;
   margin-right:5px;
-  font-weight:bold;
-  color:#C63231;
 }

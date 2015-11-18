@@ -26,3 +26,5 @@ function randomUsername() {
     }
     return rando(ADJECTIVES) + rando(FIRST_NAMES) + rando(LAST_NAMES);
 }
+
+module.exports = randomUsername;
