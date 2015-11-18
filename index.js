@@ -49,6 +49,7 @@ app.get('/token', function(request, response) {
         process.env.TWILIO_API_SECRET
     );
     token.addGrant(ipmGrant);
+    token.identity = identity;
 
     // Serialize the token to a JWT string and include it in a JSON response
     response.send({
