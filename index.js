@@ -21,10 +21,9 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
-Generate an Identity Token for a chat application user - it generates a random
+Generate an Access Token for a chat application user - it generates a random
 username for the client requesting a token, and takes a device ID as a query
 parameter.
-
 */
 app.get('/token', function(request, response) {
     var appName = 'TwilioChatDemo';
