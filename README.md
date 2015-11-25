@@ -46,7 +46,7 @@ cp .env.example .env
 
 Edit `.env` with the four configuration parameters we gathered from above.
 
-Next, we need to install our depenedencies from npm:
+Next, we need to install our dependencies from npm:
 
 ```bash
 npm install

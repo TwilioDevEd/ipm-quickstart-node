@@ -37,6 +37,7 @@ $(function() {
         var $container = $('<div class="message-container">');
         $container.append($user).append($message);
         $chatWindow.append($container);
+        $chatWindow.scrollTop($chatWindow[0].scrollHeight);
     }
 
     // Alert the user they have been assigned a random username
