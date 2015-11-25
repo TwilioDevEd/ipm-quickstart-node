@@ -47,7 +47,6 @@ $(function() {
     // and a device ID - for browser-based apps, we'll always just use the 
     // value "browser"
     $.getJSON('/token', {
-        identity: username,
         device: 'browser'
     }, function(data) {
         // Alert the user they have been assigned a random username
