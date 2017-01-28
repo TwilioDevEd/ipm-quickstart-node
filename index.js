@@ -37,6 +37,7 @@ app.get('/token', function(request, response) {
     // on a given device
     var ipmGrant = new IpMessagingGrant({
         serviceSid: process.env.TWILIO_IPM_SERVICE_SID,
+        pushCredentialSid: 'CRe9c5eff29e744709d7df875f8a797bf0',
         endpointId: endpointId
     });
 
